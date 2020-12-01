@@ -1,7 +1,10 @@
 import turtle
 
 robot = turtle.Turtle()
-robot.color = "black"
+robot.color = "white"
+width=800
+height=400
+lung=20
 
 win = turtle.Screen()
 
@@ -12,19 +15,21 @@ def left():
     robot.left(90)
 
 def forward():
-    if((robot.xcor()+50<=400 and robot.xcor()-50>=-400) and (robot.ycor()+50<=400 and robot.ycor()-50>=-400)):
-        robot.forward(50)
+    if((robot.xcor()+lung<=width//2 and robot.xcor()-lung>=-width//2) and (robot.ycor()+lung<=height//2 and robot.ycor()-lung>=-height//2)):
+        robot.forward(lung)
     else:
+        robot.reset()
         robot.goto(0,0)
 def backward():
-    if((robot.xcor()+50<=400 and robot.xcor()-50>=-400) and (robot.ycor()+50<=400 and robot.ycor()-50>=-400)):
-        robot.backward(50)
+    if((robot.xcor()+lung<=width//2 and robot.xcor()-lung>=-width//2) and (robot.ycor()+lung<=height//2 and robot.ycor()-lung>=-height//2)):
+        robot.backward(lung)
     else:
+        robot.reset()
         robot.goto(0,0)
 
 win.title("My game")
 win.bgcolor("green")
-win.setup(width=800, height=800)
+win.setup(width, height)
 
 win.listen() 
 win.onkey(forward, "Up")
